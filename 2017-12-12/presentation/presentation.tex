@@ -405,23 +405,6 @@
   \end{minted}
 \end{frame}
 
-\begin{frame}[fragile]{Matching: getting a reference}
-  \begin{minted}{rust}
-
-    let x = 5;
-
-    match x {
-        ref r => println!("Got a reference"),
-    }
-
-    let mut x = 5;
-
-    match x {
-        ref mut mr => println!("Got a mutable reference"),
-    }
-  \end{minted}
-\end{frame}
-
 \begin{frame}[fragile]{Matching: matching a range}
   \begin{minted}{rust}
     let x = 1;
