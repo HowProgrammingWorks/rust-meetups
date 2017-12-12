@@ -273,6 +273,169 @@
   without even realizing it.
 \end{frame}
 
+\begin{frame}[fragile]{Hello World}
+  \begin{minted}{rust}
+  fn main() {
+    println!("Hello!");
+  }
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Declaring variables}
+  \begin{minted}{rust}
+    let integer = 1;
+    let unsigned: uint8 = 1;
+    let mut mutable_integer = 2;
+    integer = 1; //Error here
+    mutable_integer = 3;
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Conditions}
+  \begin{minted}{rust}
+    let x = 5;
+
+    if x == 5 {
+        println!("x is five!");
+    } else {
+        println!("x is not five :(");
+    }
+
+    let y = if x == 5 { 10 } else { 15 };
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Loops: loop}
+  \begin{minted}{rust}
+    loop {
+        println!("Loop forever!");
+        break;
+    }
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Loops: while}
+  \begin{minted}{rust}
+    let mut x = 5;
+    let mut done = false;
+
+    while !done {
+        x += x - 3;
+
+        println!("{}", x);
+
+        if x % 5 == 0 {
+            done = true;
+        }
+    }
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Loops: for}
+  \begin{minted}{rust}
+    for x in 0..10 {
+        println!("{}", x);
+    }
+
+    for x in (0..10).rev() {
+        println!("{}", x);
+    }
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Matching}
+  \begin{minted}{rust}
+    let x = 5;
+
+    match x {
+        1 => println!("one"),
+        2 => println!("two"),
+        3 => println!("three"),
+        4 => println!("four"),
+        5 => println!("five"),
+        _ => println!("something else"),
+    }
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Matching: getting a value}
+  \begin{minted}{rust}
+    let x = 5;
+
+    let number = match x {
+        1 => "one",
+        2 => "two",
+        3 => "three",
+        4 => "four",
+        5 => "five",
+        _ => "something else",
+    };
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Matching: multiple patterns}
+  \begin{minted}{rust}
+    let x = 1;
+
+    match x {
+        1 | 2 => println!("one or two"),
+        3 => println!("three"),
+        _ => println!("anything"),
+    }
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Matching: getting a reference}
+  \begin{minted}{rust}
+
+    let x = 5;
+
+    match x {
+        ref r => println!("Got a reference"),
+    }
+
+    let mut x = 5;
+
+    match x {
+        ref mut mr => println!("Got a mutable reference"),
+    }
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Matching: matching a range}
+  \begin{minted}{rust}
+    let x = 1;
+
+    match x {
+        1 ... 5 => println!("one through five"),
+        _ => println!("anything"),
+    }
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Matching: binding}
+  \begin{minted}{rust}
+    let x = 1;
+
+    match x {
+        e @ 1 ... 5 => println!("{}", e),
+        _ => println!("anything"),
+    }
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Matching: guards}
+  \begin{minted}{rust}
+    let x = 4;
+    let y = false;
+
+    match x {
+        4 | 5 if y => println!("yes"),
+        _ => println!("no"),
+    }
+  \end{minted}
+\end{frame}
+
 \begin{frame}{Plugins for editors}
   \begin{itemize}
     \item Vim: \url{https://github.com/rust-lang/rust.vim}
@@ -309,14 +472,6 @@
   This presentation: \url{https://github.com/HowProgrammingWorks/rust-meetups}
 
   Telegram chat: \url{https://t.me/HowProgrammingWorks}
-\end{frame}
-
-\begin{frame}[fragile]{Hello World}
-  \begin{minted}{rust}
-  fn main() {
-    println!("Hello!");
-  }
-  \end{minted}
 \end{frame}
 
 \ferrisframe{Thanks for coming and see you next time!}
