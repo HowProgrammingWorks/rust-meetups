@@ -1,0 +1,43 @@
+#!/bin/bash
+
+set -e
+
+VENV_DIR="./venv"
+FILENAME="presentation.tex"
+
+if [ "$1" == "--clean" ]; then
+  rm -f *.aux *.fdb_latexmk *.fls *.log *.nav *.out *.snm *.toc *.vrb *.xdv
+  rm -rf _minted-presentation
+  exit
+fi
+
+if [ "$1" == "--clean-all" ]; then
+  $0 --clean
+  rm -f "${FILENAME%.tex}.pdf"
+  exit
+fi
+
+if [ "$1" == "--watch" ]; then
+  WATCH_ARG="-pvc"
+else
+  WATCH_ARG=""
+fi
+
+if [ -d "$VENV_DIR" ]; then
+  source "$VENV_DIR/bin/activate"
+else
+  PYTHON=`which python3 || which python`
+  PYTHON_FLAVOR=`$PYTHON -c "import sys; print(sys.version_info.major)"`
+
+  if [ $PYTHON_FLAVOR == "3" ]; then
+    VENV="$PYTHON -m venv"
+  else
+    VENV="$PYTHON -m virtualenv"
+  fi
+
+  $VENV "$VENV_DIR"
+  source "$VENV_DIR/bin/activate"
+  pip install -r requirements.txt
+fi
+
+latexmk -pdf -xelatex -shell-escape $WATCH_ARG "$FILENAME"
