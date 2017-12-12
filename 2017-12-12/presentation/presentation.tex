@@ -153,12 +153,124 @@
   \[\texttt{\{arch\}-\{vendor\}-\{target\}[-\{abi\}]}\]
 \end{frame}
 
-\begin{frame}[fragile]{Hello World}
-  \begin{minted}{rust}
-  fn main() {
-    println!("Hello!");
-  }
-  \end{minted}
+\begin{frame}{Built-in tools}
+  \begin{itemize}
+    \item \texttt{rustc} --- the Rust compiler
+    \item \texttt{rustdoc} --- documentation generator
+    \item \texttt{cargo} --- project management tool
+    \item \texttt{rust-lldb}, \texttt{rust-gdb} --- wrappers for \texttt{lldb}
+      and \texttt{gdb} debuggers
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Cargo}
+  Cargo is Rust's package manager, build system and overall project management
+  tool.
+
+  \begin{columns}
+    \begin{column}{0.3\textwidth}
+      \begin{itemize}
+        \item \texttt{cargo new}
+        \item \texttt{cargo run}
+        \item \texttt{cargo build}
+        \item \texttt{cargo check}
+      \end{itemize}
+    \end{column}
+
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item \texttt{cargo test}
+        \item \texttt{cargo bench}
+        \item \texttt{cargo doc}
+        \item \texttt{cargo install}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{crates.io}
+  \includegraphics[width=\textwidth]{images/crates-io.png}
+\end{frame}
+
+\begin{frame}{docs.rs}
+  \includegraphics[width=\textwidth]{images/docs-rs.png}
+\end{frame}
+
+\begin{frame}{Rustfmt}
+  Rustfmt formats your code according to the
+  \href{https://github.com/rust-lang-nursery/fmt-rfcs}{official styleguide}.
+
+  Installing:
+
+  \texttt{\$ cargo install rustfmt}
+
+  or
+
+  \texttt{\$ cargo +nightly install rustfmt-nightly}
+
+  Formatting all sources in the project:
+
+  \texttt{\$ cargo fmt}
+\end{frame}
+
+\begin{frame}{Clippy}
+  Rust compiler includes a basic built-in linter. \texttt{clippy} is a compiler
+  plugin that adds \textbf{208} additional advanced lints to catch common
+  mistakes and help you write idiomatic code.
+
+  \texttt{\$ cargo +nightly install clippy}
+
+  \texttt{\$ cargo clippy}
+\end{frame}
+
+\begin{frame}{Useful external cargo subcommands}
+  Improved dependency management:
+
+  \texttt{\$ cargo install cargo-edit}
+
+  Usage:
+
+  \texttt{\$ cargo add crate-name}
+
+  \texttt{\$ cargo rm crate-name}
+
+  \texttt{\$ cargo upgrade}
+\end{frame}
+
+\begin{frame}{Useful external cargo subcommands}
+  Updating globally installed binary crates:
+
+  \texttt{\$ cargo install cargo-update}
+
+  Usage:
+
+  \texttt{\$ cargo install-update crate-name}
+
+  \texttt{\$ cargo install-update -a}
+\end{frame}
+
+\begin{frame}{Useful external cargo subcommands}
+  Watching the project and running a command (\texttt{cargo check} by default)
+  automatically:
+
+  \texttt{\$ cargo install cargo-watch}
+
+  Usage:
+
+  \texttt{\$ cargo watch}
+
+  \texttt{\$ cargo watch -x test}
+\end{frame}
+
+\begin{frame}{Installing something else useful with cargo, while we are here}
+  \texttt{ack} is better than \texttt{grep}, and \texttt{ag} is faster than
+  \texttt{ack}, right? It's not fast enough compared to \texttt{rg}.
+
+  \texttt{\$ cargo install ripgrep}
+
+  By the way, Visual Studio Code comes bundled with \texttt{ripgrep} as its
+  search backend, so if you use VS Code, you have probably used \texttt{rg}
+  without even realizing it.
 \end{frame}
 
 \begin{frame}{Resources for learning Rust}
@@ -170,6 +282,14 @@
       \url{https://doc.rust-lang.org/beta/unstable-book/}}
     \item Reference \only<5>{---\\ \url{https://doc.rust-lang.org/reference/}}
   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Hello World}
+  \begin{minted}{rust}
+  fn main() {
+    println!("Hello!");
+  }
+  \end{minted}
 \end{frame}
 
 \ferrisframe{Thanks for coming and see you next time!}
