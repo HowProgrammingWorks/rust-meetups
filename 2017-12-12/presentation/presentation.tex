@@ -94,13 +94,6 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Installing Rust}
-  The official tool for managing Rust toolchains and their versions is
-  \texttt{rustup}.
-
-  \url{https://rustup.rs}
-\end{frame}
-
 \begin{frame}{Advantages for developers in languages like C or C++}
   \begin{itemize}
     \item Type and memory safety
@@ -117,6 +110,49 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Installing Rust}
+  The official tool for managing Rust toolchains and their versions is
+  \texttt{rustup}.
+
+  \url{https://rustup.rs}
+\end{frame}
+
+\begin{frame}{Rust Flavors}
+  \begin{itemize}
+    \item \textbf{Stable} --- recommended for most users, unstable features are
+      unavailable.
+    \item \textbf{Beta} --- preview of the next stable.
+    \item \textbf{Nightly} --- latest build from \texttt{master}, unstable
+      features are disabled by default, but available through feature-gates.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Managing Rust installation}
+  Installing a specific toolchain:
+
+  \texttt{\$ rustup install nightly}
+
+  Updating all toolchains:
+
+  \texttt{\$ rustup update}
+
+  Updating a specific toolchain:
+
+  \texttt{\$ rustup update stable}
+\end{frame}
+
+\begin{frame}{Managing Rust installation}
+  Adding a new target triple:
+
+  \texttt{\$ rustup target add wasm32-unknown-emscripten}
+
+  \texttt{\$ rustup target add armv7-apple-ios}
+\end{frame}
+
+\begin{frame}{Target triples}
+  \[\texttt{\{arch\}-\{vendor\}-\{target\}[-\{abi\}]}\]
+\end{frame}
+
 \begin{frame}[fragile]{Hello World}
   \begin{minted}{rust}
   fn main() {
@@ -127,7 +163,7 @@
 
 \begin{frame}{Resources for learning Rust}
   \begin{itemize}
-    \item ``The Rust Programming Language'' Book \only<2>{---\\
+    \item Rust Book \only<2>{---\\
       \url{https://doc.rust-lang.org/book/}}
     \item Rustonomicon \only<3>{---\\ \url{https://doc.rust-lang.org/nomicon/}}
     \item Unstable Book \only<4>{---\\
@@ -137,5 +173,11 @@
 \end{frame}
 
 \ferrisframe{Thanks for coming and see you next time!}
+
+\begin{frame}{Links}
+  This presentation: \url{https://github.com/HowProgrammingWorks/rust-meetups}
+
+  Telegram chat: \url{https://t.me/HowProgrammingWorks}
+\end{frame}
 
 \end{document}
